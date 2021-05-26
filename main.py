@@ -53,13 +53,12 @@ class mainwindow(QWidget):
             result = self.a*self.b
         elif self.op == '/':
             result = self.a/self.b
-        elif self.op == '%':
-            result = self.a/100
         self.ui.editor.setText(str(result))
 
     def darsad(self):
         self.op = '%'
         self.a = float(self.ui.editor.text())
+        self.ui.editor.setText(str(self.a/100))
 
     def gharine(self):
         self.op = '-/+'
