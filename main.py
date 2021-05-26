@@ -1,6 +1,6 @@
 import sys
 import math
-
+from functools import partial
 from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtUiTools import QUiLoader
 
@@ -13,16 +13,17 @@ class mainwindow(QWidget):
         self.ui = loader.load("form.ui")
         self.ui.show()
 # .................number..............................
-        self.ui.btn0.clicked.connect(self.num0)
-        self.ui.btn1.clicked.connect(self.num1)
-        self.ui.btn2.clicked.connect(self.num2)
-        self.ui.btn3.clicked.connect(self.num3)
-        self.ui.btn4.clicked.connect(self.num4)
-        self.ui.btn5.clicked.connect(self.num5)
-        self.ui.btn6.clicked.connect(self.num6)
-        self.ui.btn7.clicked.connect(self.num7)
-        self.ui.btn8.clicked.connect(self.num8)
-        self.ui.btn9.clicked.connect(self.num9)
+
+        self.ui.btn1.clicked.connect(partial(self.num, '1'))
+        self.ui.btn2.clicked.connect(partial(self.num, '2'))
+        self.ui.btn3.clicked.connect(partial(self.num, '3'))
+        self.ui.btn4.clicked.connect(partial(self.num, '4'))
+        self.ui.btn5.clicked.connect(partial(self.num, '5'))
+        self.ui.btn6.clicked.connect(partial(self.num, '6'))
+        self.ui.btn7.clicked.connect(partial(self.num, '7'))
+        self.ui.btn8.clicked.connect(partial(self.num, '8'))
+        self.ui.btn9.clicked.connect(partial(self.num, '9'))
+        self.ui.btn0.clicked.connect(partial(self.num, '0'))
 # ....................def_operation............................
         self.ui.btndarsad.clicked.connect(self.darsad)
         self.ui.btnm.clicked.connect(self.gharine)
@@ -38,35 +39,8 @@ class mainwindow(QWidget):
         self.ui.sqrtbtn.clicked.connect(self.sqrt)
 # --------------------------------------------------------
 
-    def num0(self):
-        self.ui.editor.setText(self.ui.editor.text()+'0')
-
-    def num1(self):
-        self.ui.editor.setText(self.ui.editor.text()+'1')
-
-    def num2(self):
-        self.ui.editor.setText(self.ui.editor.text()+'2')
-
-    def num3(self):
-        self.ui.editor.setText(self.ui.editor.text()+'3')
-
-    def num4(self):
-        self.ui.editor.setText(self.ui.editor.text()+'4')
-
-    def num5(self):
-        self.ui.editor.setText(self.ui.editor.text()+'5')
-
-    def num6(self):
-        self.ui.editor.setText(self.ui.editor.text()+'6')
-
-    def num7(self):
-        self.ui.editor.setText(self.ui.editor.text()+'7')
-
-    def num8(self):
-        self.ui.editor.setText(self.ui.editor.text()+'8')
-
-    def num9(self):
-        self.ui.editor.setText(self.ui.editor.text()+'9')
+    def num(self, x):
+        self.ui.editor.setText(self.ui.editor.text()+x)
 
     def equal(self):
 
